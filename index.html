@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>原初の星シミュレーター</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-head">
+      <h1>原初の星シミュレーター</h1>
+      <div class="season-row">
+        <label for="season-select">シーズン</label>
+        <select id="season-select"></select>
+      </div>
+    </header>
+
+    <section class="category">
+      <div class="category-head">
+        <h2>キャラクター</h2>
+        <span class="pts">個人ポイント <strong id="char-score">0</strong></span>
+      </div>
+      <div class="char-inputs">
+        <label>レベル<input type="number" id="char-level" placeholder="Lv" /></label>
+        <label>現在の経験値<input type="number" id="char-curexp" step="any" placeholder="B" /></label>
+        <label>レベルアップ経験値<input type="number" id="char-lvupexp" step="any" placeholder="B" /></label>
+      </div>
+    </section>
+
+    <section class="category">
+      <div class="category-head">
+        <h2>ペット(4匹)</h2>
+        <span class="pts">個人ポイント <strong id="pet-score">0</strong></span>
+      </div>
+      <div class="category-inputs" id="pets"></div>
+    </section>
+
+    <section class="category">
+      <div class="category-head">
+        <h2>装備(5つ)</h2>
+        <span class="pts">個人ポイント <strong id="equip-score">0</strong></span>
+      </div>
+      <div class="category-inputs" id="equips"></div>
+    </section>
+
+    <section class="category">
+      <div class="category-head">
+        <h2>スキル(8つ)</h2>
+        <span class="pts">個人ポイント <strong id="skill-score">0</strong></span>
+      </div>
+      <div class="category-inputs" id="skills"></div>
+    </section>
+
+    <section class="category">
+      <div class="category-head">
+        <h2>遺物(20個)</h2>
+        <span class="pts">個人ポイント <strong id="relic-score">0</strong></span>
+      </div>
+      <div class="category-inputs grid" id="relics"></div>
+    </section>
+
+    <section class="results">
+      <div class="result-line"><span>育成評価（合計）</span><strong id="rating">0</strong></div>
+      <div class="result-line"><span>獲得原初の星（今回）</span><strong id="earned">0</strong></div>
+      <div class="result-line input-line">
+        <label for="current-stars">現在の原初の星</label>
+        <input type="number" id="current-stars" placeholder="0" />
+      </div>
+      <div class="result-line total"><span>原初の星 最終個数</span><strong id="final">0</strong></div>
+    </section>
+
+    <button id="reset" class="reset-btn" type="button">リセット</button>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
