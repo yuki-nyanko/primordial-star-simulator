@@ -183,9 +183,9 @@ input[type="number"]:focus {
   font-weight: 800;
 }
 
-/* 各カテゴリ「1番目を全部にコピー」 */
-.fill-btn {
-  margin-top: 10px;
+/* 各カテゴリのボタン（コピー／リセット） */
+.cat-btns { display: flex; gap: 8px; margin-top: 10px; }
+.fill-btn, .clear-btn {
   background: transparent;
   color: var(--muted);
   border: 1px solid var(--line);
@@ -195,13 +195,14 @@ input[type="number"]:focus {
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
-.fill-btn:hover, .fill-btn:focus-visible {
+.fill-btn:hover, .fill-btn:focus-visible,
+.clear-btn:hover, .clear-btn:focus-visible {
   color: var(--text);
   border-color: var(--accent);
   background: rgba(224, 178, 82, 0.06);
   outline: none;
 }
-.fill-btn:active { transform: translateY(1px); }
+.fill-btn:active, .clear-btn:active { transform: translateY(1px); }
 
 /* リセット */
 .reset-btn {

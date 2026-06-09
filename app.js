@@ -155,6 +155,14 @@ function init() {
     });
   });
 
+  // 各カテゴリの「リセット」ボタン（そのカテゴリの入力だけクリア）
+  document.querySelectorAll(".clear-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      el(btn.dataset.target).querySelectorAll("input").forEach((i) => (i.value = ""));
+      recalc();
+    });
+  });
+
   recalc();
 }
 
