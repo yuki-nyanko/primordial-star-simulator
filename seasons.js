@@ -1,4 +1,5 @@
 // シーズンごとの計算定数。新シーズンはここに1ブロック足すだけ。
+// 並び順 = プルダウンの表示順。先頭が初回アクセス時の既定シーズン（最新を先頭に）。
 export const SEASONS = {
   S4: {
     label: "S4",
@@ -7,6 +8,22 @@ export const SEASONS = {
     finalDivisor: 7, // 最終式の除数 A
     finalAdd: 120, // 最終式の加算 B
     counts: { pet: 4, equip: 5, skill: 8, relic: 20 }, // 各カテゴリの項目数
+  },
+  S3: {
+    label: "S3",
+    countStartLevel: 160,
+    weights: { pet: 6, equip: 14, skill: 5, relic: 26 },
+    finalDivisor: 13,
+    finalAdd: 65.5,
+    counts: { pet: 4, equip: 5, skill: 8, relic: 20 },
+  },
+  S2: {
+    label: "S2",
+    countStartLevel: 130,
+    weights: { pet: 8, equip: 18, skill: 7, relic: 33 },
+    finalDivisor: 27,
+    finalAdd: 45,
+    counts: { pet: 4, equip: 5, skill: 8, relic: 20 },
   },
 };
 
