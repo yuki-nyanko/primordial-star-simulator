@@ -23,8 +23,8 @@
       </div>
       <div class="char-inputs">
         <label>レベル<input type="number" id="char-level" placeholder="Lv" /></label>
-        <label>現在の経験値<input type="number" id="char-curexp" step="any" placeholder="B" /></label>
-        <label>レベルアップ経験値<input type="number" id="char-lvupexp" step="any" placeholder="B" /></label>
+        <label>現在の経験値<input type="number" id="char-curexp" step="any" placeholder="" /></label>
+        <label>レベルアップ経験値<input type="number" id="char-lvupexp" step="any" placeholder="" /></label>
       </div>
     </section>
 
@@ -34,6 +34,7 @@
         <span class="pts">個人ポイント <strong id="pet-score">0</strong></span>
       </div>
       <div class="category-inputs" id="pets"></div>
+      <button type="button" class="fill-btn" data-target="pets">1番目を全部にコピー</button>
     </section>
 
     <section class="category">
@@ -42,6 +43,7 @@
         <span class="pts">個人ポイント <strong id="equip-score">0</strong></span>
       </div>
       <div class="category-inputs" id="equips"></div>
+      <button type="button" class="fill-btn" data-target="equips">1番目を全部にコピー</button>
     </section>
 
     <section class="category">
@@ -50,6 +52,7 @@
         <span class="pts">個人ポイント <strong id="skill-score">0</strong></span>
       </div>
       <div class="category-inputs" id="skills"></div>
+      <button type="button" class="fill-btn" data-target="skills">1番目を全部にコピー</button>
     </section>
 
     <section class="category">
@@ -58,11 +61,12 @@
         <span class="pts">個人ポイント <strong id="relic-score">0</strong></span>
       </div>
       <div class="category-inputs grid" id="relics"></div>
+      <button type="button" class="fill-btn" data-target="relics">1番目を全部にコピー</button>
     </section>
 
     <section class="results">
       <div class="result-line"><span>育成評価（合計）</span><strong id="rating">0</strong></div>
-      <div class="result-line"><span>獲得原初の星（今回）</span><strong id="earned">0</strong></div>
+      <div class="result-line"><span>今シーズンで獲得できる原初の星</span><strong id="earned">0</strong></div>
       <div class="result-line input-line">
         <label for="current-stars">現在の原初の星</label>
         <input type="number" id="current-stars" placeholder="0" />

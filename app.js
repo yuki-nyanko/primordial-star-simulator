@@ -71,23 +71,22 @@ function buildForSeason(season) {
   buildCategoryInputs("relics", season.counts.relic, "relic");
 }
 
-function readLevels(prefix, count) {
-  const arr = [];
-  for (let i = 0; i < count; i++) arr.push(el(`${prefix}-${i}`).value);
-  return arr;
+// コンテナ内の入力欄を個数に依らずDOMから読む（シーズン切替時の値退避にも使用）
+function readLevels(containerId) {
+  return Array.from(el(containerId).querySelectorAll("input")).map((i) => i.value);
 }
 
-function readInputs(season) {
+function readInputs() {
   return {
     character: {
       level: el("char-level").value,
       currentExp: el("char-curexp").value,
       levelUpExp: el("char-lvupexp").value,
     },
-    pets: readLevels("pet", season.counts.pet),
-    equips: readLevels("equip", season.counts.equip),
-    skills: readLevels("skill", season.counts.skill),
-    relics: readLevels("relic", season.counts.relic),
+    pets: readLevels("pets"),
+    equips: readLevels("equips"),
+    skills: readLevels("skills"),
+    relics: readLevels("relics"),
     currentStars: el("current-stars").value,
   };
 }
@@ -95,7 +94,7 @@ function readInputs(season) {
 function recalc() {
   const seasonKey = el("season-select").value;
   const season = SEASONS[seasonKey];
-  const inputs = readInputs(season);
+  const inputs = readInputs();
 
   const cScore = calc.characterScore(inputs.character, season);
   const pScore = calc.petScore(inputs.pets, season);
@@ -135,13 +134,26 @@ function init() {
   if (saved?.inputs) applyInputs(saved.inputs);
 
   select.addEventListener("change", () => {
+    const kept = readInputs(); // 変更前の入力値を退避
     buildForSeason(SEASONS[select.value]);
+    applyInputs(kept); // シーズンを変えても入力値を維持
     recalc();
   });
   ["char-level", "char-curexp", "char-lvupexp", "current-stars"].forEach((id) =>
     el(id).addEventListener("input", recalc)
   );
   el("reset").addEventListener("click", reset);
+
+  // 各カテゴリの「1番目を全部にコピー」ボタン
+  document.querySelectorAll(".fill-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const inputs = el(btn.dataset.target).querySelectorAll("input");
+      if (inputs.length === 0) return;
+      const v = inputs[0].value;
+      inputs.forEach((i) => (i.value = v));
+      recalc();
+    });
+  });
 
   recalc();
 }
